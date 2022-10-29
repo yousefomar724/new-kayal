@@ -6,9 +6,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "framer-motion": "^7.6.2",
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.6.0",
+    "react-rating-stars-component": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
