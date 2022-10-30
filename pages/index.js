@@ -10,6 +10,7 @@ import Image from "next/image"
 const Home = () => {
   const [sideNav, setSideNav] = useState(false)
   const [categories, items, dispatch] = useContext(ItemContext)
+
   useEffect(() => {
     dispatch({ type: "CATEGORY_ITEMS", payload: 1 })
     document
@@ -17,6 +18,7 @@ const Home = () => {
       .scrollTo({ behavior: "smooth", left: "0" })
   }, [])
   const [selectedTab, setSelectedTab] = useState(categories[0])
+
   const handleClick = (id, category) => {
     setSelectedTab(category)
     dispatch({ type: "CATEGORY_ITEMS", payload: id })
