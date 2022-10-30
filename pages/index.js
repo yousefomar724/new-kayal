@@ -17,7 +17,11 @@ const Home = () => {
   const handleClick = (id, category) => {
     setSelectedTab(category)
     dispatch({ type: "CATEGORY_ITEMS", payload: id })
-    var center = document.getElementById(category.id)
+    const center = document.getElementById(category.id)
+    const scrollBar = document.getElementById("scroll")
+    if (category.id === 1) {
+      scrollBar.scrollTo({ behavior: "smooth", left: "0" })
+    }
     if (!category.selected) {
       center.scrollIntoView({
         behavior: "smooth",
@@ -43,22 +47,27 @@ const Home = () => {
       </Head>
       <TopNav type={true} setSideNav={setSideNav} />
       <SideNav sideNav={sideNav} setSideNav={setSideNav} />
-      <main className="container mx-auto bg-white transition duration-200 dark:bg-gray-700 dark:text-white space-y-4 shadow-2xl">
+      <main className="container mx-auto bg-white transition duration-200 overflow-hidden dark:bg-gray-700 dark:text-white space-y-4 shadow-2xl">
         {/* CategoriesList */}
-        <div className="sticky inset-x-0 top-0 z-90 space-x-4 flex flex-row-reversee justify-around px-2 transition-all shadow-sm dark:shadow-none bg-white dark:bg-gray-700">
-          <div className="w-full flex flex-row flex-nowrap scrollbar-hide whitespace-nowrap overflow-auto">
+        <div className="sticky inset-x-0 top-0 z-90 space-x-4 flex flex-row-reversee justify-around transition-all shadow-sm dark:shadow-none bg-white dark:bg-gray-700">
+          <div
+            className="w-full flex gap-2 flex-row flex-nowrap overflow-auto"
+            id="scroll"
+          >
             {categories.map((category) => (
               <div
                 key={category.id}
                 id={`${category.id}`}
                 onClick={() => handleClick(category.id, category)}
-                className={`rtl h-10 my-4 mx-2 py-4 px-6 rounded-full bg-primaryGreen-300 dark:bg-gray-900 hover:bg-primaryGreen-500 flex flex-row-reverse justify-center gap-2 items-center cursor-pointer transition hover:text-white dark:hover:text-white active:bg-primaryGreen-500 dark:hover:bg-primaryGreen-4000 active:text-white foucs:bg-primaryGreen-400 foucs:text-white ${
+                className={`rtl h-10 my-4 mr-2 py-3 px-6 rounded-full bg-primaryGreen-300 dark:bg-gray-900 hover:bg-primaryGreen-500 flex flex-row-reverse justify-center gap-1 items-center cursor-pointer transition hover:text-white dark:hover:text-white active:bg-primaryGreen-500 dark:hover:bg-primaryGreen-4000 active:text-white foucs:bg-primaryGreen-400 foucs:text-white ${
                   category === selectedTab
                     ? "text-white bg-primaryGreen-500 dark:text-white dark:bg-primaryGreen-500"
                     : "text-gray-800 bg-primaryGreen-300 dark:text-primaryGreen-100"
                 }`}
               >
-                <span className="text-xs font-semibold ">{category.title}</span>
+                <span className="text-xs whitespace-nowrap font-semibold">
+                  {category.title}
+                </span>
                 <Image
                   src={category.image}
                   alt="category icon"
@@ -70,8 +79,8 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="relative space-y-2 flex flex-col justify-center items-center px-2 pb-4">
-          <AnimatePresence exitBeforeEnter>
+        <div className="relative space-y-2 flex flex-col justify-center overflow-hidden items-center pb-4">
+          <AnimatePresence mode="wait">
             <motion.div
               key={selectedTab ? selectedTab.id : "empty"}
               layout={true}

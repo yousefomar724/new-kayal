@@ -5,7 +5,7 @@ function Items({ item: items }) {
   return items.map((item) => (
     <div
       key={item.id}
-      className={`relative w-full sm:w-11/12 w-11/12 h-28 sm:mx-1 border-2 rounded-lg grid grid-cols-12 gap-2 bg-gray-100 hover:bg-gray-200 cursor-pointer transition duration-200 dark:bg-gray-900 ${
+      className={`relative w-full sm:w-11/12 w-11/12 h-28 sm:mx-1 rounded-lg grid grid-cols-12 gap-2 bg-gray-100 cursor-pointer transition duration-200 dark:bg-gray-900 ${
         item.selected ? "bg-primaryGreen-300" : ""
       }`}
     >
