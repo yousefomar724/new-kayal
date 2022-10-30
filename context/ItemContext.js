@@ -2,27 +2,6 @@ import React, { createContext, useReducer } from "react"
 import itemsData from "../data"
 
 export const ItemContext = createContext()
-const Catereducer = (state, action) => {
-  switch (action.type) {
-    case "CATEGORY_SELECTION":
-      let categories = itemsData.map((category) => ({
-        id: category.id,
-        title: category.title,
-        image: category.image,
-        selected: category.id === action.payload ? true : false,
-      }))
-
-      return categories
-
-    default:
-      return (categories = itemsData.map((category) => ({
-        id: category.id,
-        title: category.title,
-        image: category.image,
-        selected: category.id === 1 ? true : false,
-      })))
-  }
-}
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -44,7 +23,7 @@ const reducer = (state, action) => {
 }
 
 export const ItemProvider = (props) => {
-  const initcategories = itemsData.map((category) => ({
+  const categories = itemsData.map((category) => ({
     id: category.id,
     title: category.title,
     image: category.image,
@@ -52,10 +31,9 @@ export const ItemProvider = (props) => {
   }))
 
   const [items, dispatch] = useReducer(reducer, itemsData[0].items)
-  const [categories, Catedispatch] = useReducer(Catereducer, initcategories)
 
   return (
-    <ItemContext.Provider value={[categories, items, dispatch, Catedispatch]}>
+    <ItemContext.Provider value={[categories, items, dispatch]}>
       {props.children}
     </ItemContext.Provider>
   )

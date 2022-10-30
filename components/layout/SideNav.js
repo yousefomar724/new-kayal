@@ -3,8 +3,12 @@ import { FiX, FiSun, FiMoon } from "react-icons/fi"
 import { FaSnapchat, FaInstagram, FaWhatsapp, FaPhoneAlt } from "react-icons/fa"
 import useDarkMode from "../../hooks/useDarkMode.js"
 import Image from "next/image"
+import { BsSearch } from "react-icons/bs"
+import data from "../../data"
+import Router, { useRouter } from "next/router.js"
 
 export default function SideNav({ sideNav, setSideNav }) {
+  const router = useRouter()
   const [isDarkMode, toggleDarkMode] = useDarkMode()
   const sideNavData = [
     {
@@ -28,6 +32,15 @@ export default function SideNav({ sideNav, setSideNav }) {
     { id: 4, text: "اتصل بنا", icon: FaPhoneAlt, href: "tel:0114333555" },
   ]
 
+  const handleSearch = (e) => {
+    e.preventDefault()
+    let searchValue = e.target.search.value
+    if (searchValue.length > 0) {
+      Router.push(`/search/${searchValue}`)
+      searchValue = ""
+      setSideNav(false)
+    }
+  }
   return (
     <div className="relative flex justify-center z-102">
       <div
@@ -37,7 +50,7 @@ export default function SideNav({ sideNav, setSideNav }) {
         onClick={() => setSideNav(false)}
       ></div>
       <div
-        className={`fixed top-0 bg-white flex flex-col dark:bg-gray-700 h-full transition-all duration-200 ${
+        className={`fixed top-0 right-0 bg-white flex flex-col dark:bg-gray-700 h-full transition-all duration-200 ${
           sideNav ? "left-[15%]" : "left-[100vw]"
         }`}
       >
@@ -47,11 +60,31 @@ export default function SideNav({ sideNav, setSideNav }) {
           }`}
           onClick={() => setSideNav(false)}
         />
-        <div className="bg-primaryGreen-300 transition duration-500 dark:bg-gray-100 flex items-center justify-center py-4">
-          <Image src="/logo.png" alt="side nav logo" width={110} height={110} />
+        <div className="bg-primaryGreen-300 transition duration-500 dark:bg-white flex items-center justify-center py-4">
+          <Image src="/logo.png" alt="side nav logo" width={80} height={80} />
         </div>
+        <form
+          className={`relative transition-all duration-200 flex m-2 gap-2 ${
+            sideNav ? "left-0" : "left-[100vw]"
+          }`}
+          onSubmit={handleSearch}
+        >
+          <input
+            type="text"
+            placeholder="ابحث..."
+            name="search"
+            className="outline-none p-2 flex-grow rounded-md bg-gray-100 focus:bg-gray-200 hover:bg-gray-200"
+          />
+          <button
+            className="py-2 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white"
+            title="ابحث"
+            type="submit"
+          >
+            <BsSearch />
+          </button>
+        </form>
         <div
-          className="flex flex-col gap-1 rounded-md"
+          className="flex flex-col gap-1 overflow-hidden mx-2 rounded-md"
           onClick={() => setSideNav(false)}
         >
           <p className="py-3 px-4 rounded-sm transition bg-primaryGreen-200 bg-opacity-500 text-justify text-sm md:text-md text-gray-600 font-semibold">
@@ -62,10 +95,10 @@ export default function SideNav({ sideNav, setSideNav }) {
           {sideNavData.map((link) => (
             <a
               href={link.href}
-              className="relative flex justify-between items-center py-3 px-4 rounded-smm transition bg-gray-100 hover:bg-gray-200 bg-opacity-500 shadow-sm text-gray-800 group"
+              className="relative flex justify-between items-center py-3 px-4 rounded-sm transition bg-gray-100 hover:bg-gray-200 bg-opacity-500 shadow-sm text-gray-800 group"
               key={link.id}
             >
-              <h1 className="text-sm md:text-md text-gray-600 font-semibold group-hover:text-gray-800">
+              <h1 className="text-xs md:text-md text-gray-600 font-semibold group-hover:text-gray-800">
                 {link.text}
               </h1>
               <link.icon className="text-primaryGreen-500 w-5 h-5" />
@@ -75,7 +108,7 @@ export default function SideNav({ sideNav, setSideNav }) {
             onClick={() => toggleDarkMode()}
             className="relative flex justify-between items-center py-3 px-4 rounded-sm transition bg-gray-100 bg-opacity-500 shadow-sm text-gray-800 hover:bg-gray-200"
           >
-            <h1 className="text-sm md:text-md text-gray-600 font-semibold">
+            <h1 className="text-xs md:text-md text-gray-600 font-semibold">
               {isDarkMode ? "وضع نهاري" : "وضع ليلي"}
             </h1>
             <div

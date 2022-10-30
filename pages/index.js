@@ -12,23 +12,25 @@ const Home = () => {
   const [categories, items, dispatch] = useContext(ItemContext)
   useEffect(() => {
     dispatch({ type: "CATEGORY_ITEMS", payload: 1 })
+    document
+      .getElementById("scroll")
+      .scrollTo({ behavior: "smooth", left: "0" })
   }, [])
   const [selectedTab, setSelectedTab] = useState(categories[0])
   const handleClick = (id, category) => {
     setSelectedTab(category)
     dispatch({ type: "CATEGORY_ITEMS", payload: id })
     const center = document.getElementById(category.id)
-    const scrollBar = document.getElementById("scroll")
     if (category.id === 1) {
-      scrollBar.scrollTo({ behavior: "smooth", left: "0" })
+      document
+        .getElementById("scroll")
+        .scrollTo({ behavior: "smooth", left: "0" })
     }
-    if (!category.selected) {
-      center.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      })
-    }
+    center.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    })
   }
   return (
     <div
@@ -59,8 +61,8 @@ const Home = () => {
                 key={category.id}
                 id={`${category.id}`}
                 onClick={() => handleClick(category.id, category)}
-                className={`rtl h-10 my-4 mr-2 py-3 px-6 rounded-full bg-primaryGreen-300 dark:bg-gray-900 hover:bg-primaryGreen-500 flex flex-row-reverse justify-center gap-1 items-center cursor-pointer transition hover:text-white dark:hover:text-white active:bg-primaryGreen-500 dark:hover:bg-primaryGreen-4000 active:text-white foucs:bg-primaryGreen-400 foucs:text-white ${
-                  category === selectedTab
+                className={`h-10 my-4 mr-2 py-3 px-6 rounded-full bg-primaryGreen-300 dark:bg-gray-900 hover:bg-primaryGreen-500 flex flex-row-reverse justify-center gap-1 items-center cursor-pointer transition hover:text-white dark:hover:text-white active:bg-primaryGreen-500 dark:hover:bg-primaryGreen-4000 active:text-white foucs:bg-primaryGreen-400 foucs:text-white ${
+                  category.id === selectedTab.id
                     ? "text-white bg-primaryGreen-500 dark:text-white dark:bg-primaryGreen-500"
                     : "text-gray-800 bg-primaryGreen-300 dark:text-primaryGreen-100"
                 }`}
@@ -71,8 +73,8 @@ const Home = () => {
                 <Image
                   src={category.image}
                   alt="category icon"
-                  width={28}
-                  height={28}
+                  width={24}
+                  height={24}
                   priority
                 />
               </div>
