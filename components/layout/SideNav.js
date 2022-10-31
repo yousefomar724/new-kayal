@@ -4,11 +4,9 @@ import { FaSnapchat, FaInstagram, FaWhatsapp, FaPhoneAlt } from "react-icons/fa"
 import useDarkMode from "../../hooks/useDarkMode.js"
 import Image from "next/image"
 import { BsSearch } from "react-icons/bs"
-import Router, { useRouter } from "next/router.js"
-import { motion } from "framer-motion"
+import { useRouter } from "next/router"
 
 export default function SideNav({ sideNav, setSideNav }) {
-  const router = useRouter()
   const [isDarkMode, toggleDarkMode] = useDarkMode()
   const sideNavData = [
     {
@@ -31,16 +29,13 @@ export default function SideNav({ sideNav, setSideNav }) {
     },
     { id: 4, text: "اتصل بنا", icon: FaPhoneAlt, href: "tel:0114333555" },
   ]
-  const searchRef = useRef()
-  useEffect(() => {
-    searchRef.current.focus()
-  }, [sideNav])
 
   const handleSearch = (e) => {
+    const router = useRouter()
     e.preventDefault()
     let searchValue = e.target.search.value
     if (searchValue.length > 0) {
-      Router.push(`/search/${searchValue}`)
+      router.push(`/search/${searchValue}`)
       searchValue = ""
       setSideNav(false)
     }
@@ -71,7 +66,6 @@ export default function SideNav({ sideNav, setSideNav }) {
         </div>
         <form className={`m-2 flex gap-2`} onSubmit={handleSearch}>
           <input
-            ref={searchRef}
             type="text"
             placeholder="ابحث..."
             name="search"

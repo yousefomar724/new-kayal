@@ -51,9 +51,9 @@ const Home = () => {
       </Head>
       <TopNav type={true} setSideNav={setSideNav} />
       <SideNav sideNav={sideNav} setSideNav={setSideNav} />
-      <main className="container mx-auto bg-white transition duration-200 overflow-hidden dark:bg-gray-700 dark:text-white space-y-4 shadow-2xl">
+      <main className="container mx-auto bg-white transition duration-200 dark:bg-gray-700 dark:text-white space-y-4 shadow-2xl">
         {/* CategoriesList */}
-        <div className="sticky inset-x-0 top-0 z-90 space-x-4 flex flex-row-reversee justify-around transition-all shadow-sm dark:shadow-none bg-white dark:bg-gray-700">
+        <div className="sticky inset-x-0 top-0 z-90 flex flex-row-reversee justify-around transition-all shadow-sm dark:shadow-none bg-white dark:bg-gray-700">
           <div
             className="w-full flex gap-2 flex-row flex-nowrap overflow-auto"
             id="scroll"
@@ -64,8 +64,8 @@ const Home = () => {
                 id={`${category.id}`}
                 onClick={() => handleClick(category.id, category)}
                 className={`h-10 my-4 ${
-                  category.id === 1 ? "mr-[1.4rem]" : "mr-2"
-                } py-3 px-6 rounded-full bg-primaryGreen-300 dark:bg-gray-900 hover:bg-primaryGreen-500 flex flex-row-reverse justify-center gap-1 items-center cursor-pointer transition hover:text-white dark:hover:text-white active:bg-primaryGreen-500 dark:hover:bg-primaryGreen-4000 active:text-white foucs:bg-primaryGreen-400 foucs:text-white ${
+                  category.id === 1 ? "mr-[1.4rem]" : "mr-1"
+                } py-3 px-6 rounded-full bg-primaryGreen-300 dark:bg-gray-900 hover:bg-primaryGreen-500 flex flex-row-reverse justify-center items-center cursor-pointer transition hover:text-white dark:hover:text-white active:bg-primaryGreen-500 dark:hover:bg-primaryGreen-4000 active:text-white foucs:bg-primaryGreen-400 foucs:text-white ${
                   category.id === selectedTab.id
                     ? "text-white bg-primaryGreen-500 dark:text-white dark:bg-primaryGreen-500"
                     : "text-gray-800 bg-primaryGreen-300 dark:text-primaryGreen-100"
