@@ -12,7 +12,7 @@ export default function TopNav({ type, setSideNav }) {
     >
       <nav className="z-30 relative App-header absolutee left-0 right-0 text-white pt-1 pr-1 rounded-bb-xl">
         <div
-          className={`z-50 w-full max-w-md mx-auto h-16 top-auto bg-white rounded-t-4xl shadow-lg grid gap-2 grid-cols-12  place-content-center ${
+          className={`z-50 w-full max-w-md mx-auto h-16 top-auto bg-white rounded-t-4xl grid gap-2 grid-cols-12  place-content-center ${
             type && "rounded-bb-xl dark:bg-gray-700 bg-opacity-50"
           } ${router.pathname !== "/" && "dark:bg-opacity-50"}`}
         >
