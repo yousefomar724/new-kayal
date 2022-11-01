@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { FiX, FiSun, FiMoon } from "react-icons/fi"
 import { FaSnapchat, FaInstagram, FaWhatsapp, FaPhoneAlt } from "react-icons/fa"
 import useDarkMode from "../../hooks/useDarkMode.js"
@@ -30,13 +30,15 @@ export default function SideNav({ sideNav, setSideNav }) {
     { id: 4, text: "اتصل بنا", icon: FaPhoneAlt, href: "tel:0114333555" },
   ]
   const router = useRouter()
+  const inputRef = useRef()
 
   const handleSearch = (e) => {
     e.preventDefault()
-    let searchValue = e.target.search.value
+    let searchValue = inputRef.current.value
+    inputRef.current.blur()
     if (searchValue.length > 0) {
       router.push(`/search/${searchValue}`)
-      searchValue = ""
+      e.target.reset()
       setSideNav(false)
     }
   }
@@ -66,6 +68,7 @@ export default function SideNav({ sideNav, setSideNav }) {
         </div>
         <form className={`mx-2 my-1 flex gap-2`} onSubmit={handleSearch}>
           <input
+            ref={inputRef}
             type="text"
             placeholder="ابحث..."
             name="search"
