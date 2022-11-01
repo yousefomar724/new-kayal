@@ -69,6 +69,7 @@ export default function SideNav({ sideNav, setSideNav }) {
         <form className={`mx-2 my-1 flex gap-2`} onSubmit={handleSearch}>
           <input
             ref={inputRef}
+            autoComplete="off"
             type="text"
             placeholder="ابحث..."
             name="search"
