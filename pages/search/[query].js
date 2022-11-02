@@ -1,7 +1,6 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
-import Items from "../../components/home/Items"
 import SideNav from "../../components/layout/SideNav"
 import TopNav from "../../components/layout/TopNav"
 import data from "../../data"
