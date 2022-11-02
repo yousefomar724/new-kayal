@@ -1,14 +1,9 @@
 import React from "react"
 import Image from "next/image"
 
-function Items({ item: items }) {
-  return items.map((item) => (
-    <div
-      key={item.id}
-      className={`relative w-full sm:w-11/12 w-11/12 h-28 sm:mx-1 rounded-lg grid grid-cols-12 gap-2 bg-gray-100 cursor-pointer transition duration-200 dark:bg-gray-900 ${
-        item.selected ? "bg-primaryGreen-300" : ""
-      }`}
-    >
+function Item({ item }) {
+  return (
+    <div className="relative w-full sm:w-11/12 w-11/12 h-28 sm:mx-1 rounded-lg grid grid-cols-12 gap-2 bg-gray-100 cursor-pointer transition duration-200 dark:bg-gray-900">
       <div className="relative w-full rounded-lg col-span-4 sm:col-span-3 flex items-center justify-center">
         <Image
           className="absolute inset-0 w-full h-full p-0.5 object-cover rounded-lg"
@@ -45,7 +40,7 @@ function Items({ item: items }) {
         </div>
       </div>
     </div>
-  ))
+  )
 }
 
-export default Items
+export default Item
