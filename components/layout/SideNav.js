@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import { FiX, FiSun, FiMoon } from "react-icons/fi"
 import { FaSnapchat, FaInstagram, FaWhatsapp, FaPhoneAlt } from "react-icons/fa"
 import useDarkMode from "../../hooks/useDarkMode.js"
