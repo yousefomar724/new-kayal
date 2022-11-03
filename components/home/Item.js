@@ -31,7 +31,7 @@ function Item({ item }) {
             ""
           )}
 
-          <span className="text-sm flex items-center font-semibold self-end mr-auto">
+          <span className="text-sm flex items-center font-semibold self-end mr-auto dark:text-white">
             {item.price}
             <span className="text-primaryGreen-500 text-xs font-semibold mx-0.5">
               ريال

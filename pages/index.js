@@ -11,27 +11,30 @@ import { BsSearch, BsX } from "react-icons/bs"
 import Item from "../components/home/Item"
 
 const Home = () => {
+  const inputRef = useRef()
+
   const [sideNav, setSideNav] = useState(false)
   const [filteredItems, setFilteredItems] = useState([])
-  // isSubmitted
-  const inputRef = useRef()
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [searchValue, setSearchValue] = useState(inputRef.current?.value || "")
 
   const handleSearch = (e) => {
     e.preventDefault()
-    setSearchValue(inputRef.current?.value)
     inputRef.current.blur()
     if (inputRef.current?.value.length > 0) {
+      setIsSubmitted(true)
+      setSearchValue(inputRef.current?.value)
       const items = categories
         .flatMap((c) => c.items)
         .filter((i) => i.title.includes(inputRef.current?.value))
+
       setFilteredItems(items)
       e.target.reset()
-      console.log(searchValue)
     }
   }
 
   const close = () => {
+    setIsSubmitted(false)
     setFilteredItems([])
   }
 
@@ -59,7 +62,7 @@ const Home = () => {
 
   return (
     <div
-      className="relative max-w-md mx-auto shadow-2xl transition duration-100 dark:bg-gray-700"
+      className="relative min-h-screen max-w-md mx-auto shadow-2xl transition duration-100 dark:bg-gray-700"
       dir="rtl"
     >
       <Head>
@@ -84,10 +87,10 @@ const Home = () => {
           type="text"
           placeholder="ابحث..."
           name="search"
-          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white"
+          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white peer"
         />
         <button
-          className="py-1.5 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white"
+          className="py-1.5 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white peer:empty:text-red-500"
           title="البحث"
           type="submit"
         >
@@ -95,29 +98,29 @@ const Home = () => {
         </button>
       </form>
       <div className="my-custom-pagination"></div>
-      {filteredItems.length > 0 && (
-        <div className="m-4 flex flex-col">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl dark:text-white text-primaryGreen-600 font-bold">
+      {isSubmitted && (
+        <div className="m-4 flex items-center justify-between bg-gray-200 px-3 py-2 rounded-md">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-3xl dark:text-white text-primaryGreen-600 dark:text-primaryGreen-500 font-bold">
               {searchValue}
             </h2>
-            <BsX
-              className="w-10 h-10 p-2 text-white bg-primaryGreen-500 rounded-xl hover:bg-primaryGreen-600 cursor-pointer"
-              onClick={close}
-            />
+            <span className="text-xs dark:text-gray-200 text-gray-600 flex items-center gap-1 dark:text-gray-700">
+              <span className="text-lg text-primaryGreen-500">
+                ({filteredItems.length})
+              </span>{" "}
+              صنف من نتائج البحث
+            </span>
           </div>
-          <span className="text-xs dark:text-gray-200 text-gray-600 flex items-center gap-1">
-            <span className="text-lg text-primary-Green-500">
-              ({filteredItems.length})
-            </span>{" "}
-            صنف من نتائج البحث
-          </span>
+          <BsX
+            className="w-10 h-10 p-2 text-white bg-primaryGreen-500 rounded-xl hover:bg-primaryGreen-600 cursor-pointer"
+            onClick={close}
+          />
         </div>
       )}
       <SideNav sideNav={sideNav} setSideNav={setSideNav} />
       <Swiper
-        allowSlideNext={filteredItems.length === 0}
-        allowSlidePrev={filteredItems.length === 0}
+        allowSlideNext={!isSubmitted}
+        allowSlidePrev={!isSubmitted}
         autoHeight={true}
         pagination={pagination}
         modules={[Pagination]}
@@ -141,13 +144,21 @@ const Home = () => {
           <SwiperSlide key={i} className="h-fit">
             <div className="relative space-y-2 flex flex-col justify-center overflow-hidden items-center pb-4">
               <div className="w-full py-4 flex flex-col gap-2 items-center">
-                {filteredItems.length > 0
-                  ? filteredItems.map((item, index) => (
+                {isSubmitted ? (
+                  filteredItems.length === 0 ? (
+                    <p className="text-center text-3xl font-bold text-gray-600 my-4 dark:text-gray-200">
+                      لا يوجد نتائج
+                    </p>
+                  ) : (
+                    filteredItems.map((item, index) => (
                       <Item item={item} key={index} />
                     ))
-                  : category.items?.map((item, index) => (
-                      <Item item={item} key={index} />
-                    ))}
+                  )
+                ) : (
+                  category.items?.map((item, index) => (
+                    <Item item={item} key={index} />
+                  ))
+                )}
               </div>
             </div>
           </SwiperSlide>
