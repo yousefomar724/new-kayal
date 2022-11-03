@@ -87,10 +87,10 @@ const Home = () => {
           type="text"
           placeholder="ابحث..."
           name="search"
-          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white peer"
+          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white dark:bg-gray-200"
         />
         <button
-          className="py-1.5 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white peer:empty:text-red-500"
+          className="py-1.5 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white"
           title="البحث"
           type="submit"
         >
@@ -99,20 +99,20 @@ const Home = () => {
       </form>
       <div className="my-custom-pagination"></div>
       {isSubmitted && (
-        <div className="m-4 flex items-center justify-between bg-gray-200 px-3 py-2 rounded-md">
+        <div className="m-4 flex items-center justify-between bg-gray-200 px-3 py-2 rounded-md dark:bg-primaryGreen-500">
           <div className="flex flex-col gap-1">
-            <h2 className="text-3xl dark:text-white text-primaryGreen-600 dark:text-primaryGreen-500 font-bold">
+            <h2 className="text-3xl dark:text-white text-primaryGreen-600 dark:text-white font-bold">
               {searchValue}
             </h2>
-            <span className="text-xs dark:text-gray-200 text-gray-600 flex items-center gap-1 dark:text-gray-700">
-              <span className="text-lg text-primaryGreen-500">
+            <span className="text-xs dark:text-gray-200 text-gray-600 flex items-center gap-1 dark:text-gray-200">
+              <span className="text-lg text-primaryGreen-500 dark:text-white">
                 ({filteredItems.length})
               </span>{" "}
               صنف من نتائج البحث
             </span>
           </div>
           <BsX
-            className="w-10 h-10 p-2 text-white bg-primaryGreen-500 rounded-xl hover:bg-primaryGreen-600 cursor-pointer"
+            className="w-10 h-10 p-1.5 text-white bg-primaryGreen-500 rounded-xl hover:bg-primaryGreen-600 cursor-pointer dark:bg-gray-100 dark:text-primaryGreen-500"
             onClick={close}
           />
         </div>
@@ -146,7 +146,7 @@ const Home = () => {
               <div className="w-full py-4 flex flex-col gap-2 items-center">
                 {isSubmitted ? (
                   filteredItems.length === 0 ? (
-                    <p className="text-center w-full text-3xl font-bold text-gray-600 mt-14 dark:text-gray-200">
+                    <p className="text-center w-full text-3xl font-bold text-gray-600 mt-20 dark:text-gray-200">
                       لا يوجد نتائج
                     </p>
                   ) : (
