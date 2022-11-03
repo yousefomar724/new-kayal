@@ -1,6 +1,6 @@
 import Head from "next/head"
 import TopNav from "../components/layout/TopNav"
-// import SideNav from "../components/layout/SideNav"
+import SideNav from "../components/layout/SideNav"
 import { useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
@@ -9,11 +9,6 @@ import { Pagination } from "swiper"
 import categories from "../data"
 import { BsSearch, BsX } from "react-icons/bs"
 import Item from "../components/home/Item"
-import dynamic from "next/dynamic"
-
-const SideNav = dynamic(() => import("../components/layout/SideNav"), {
-  ssr: false,
-})
 
 const Home = () => {
   const inputRef = useRef()
