@@ -87,7 +87,7 @@ const Home = () => {
           type="text"
           placeholder="ابحث..."
           name="search"
-          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white dark:bg-gray-700 placeholder:text-white dark:text-white"
+          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white dark:bg-gray-700 dark:placeholder:text-white dark:text-white"
         />
         <button
           className="py-1.5 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white"
@@ -99,7 +99,7 @@ const Home = () => {
       </form>
       <div className="my-custom-pagination"></div>
       {isSubmitted && (
-        <div className="m-4 flex items-center justify-between bg-gray-200 px-3 py-2 rounded-md dark:bg-primaryGreen-500">
+        <div className="m-4 flex items-center justify-between bg-gray-100 px-3 py-2 rounded-md dark:bg-primaryGreen-500">
           <div className="flex flex-col gap-1">
             <h2 className="text-3xl dark:text-white text-primaryGreen-600 dark:text-white font-bold">
               {searchValue}

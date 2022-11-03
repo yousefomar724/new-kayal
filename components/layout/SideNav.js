@@ -3,8 +3,6 @@ import { FiX, FiSun, FiMoon } from "react-icons/fi"
 import { FaSnapchat, FaInstagram, FaWhatsapp, FaPhoneAlt } from "react-icons/fa"
 import useDarkMode from "../../hooks/useDarkMode.js"
 import Image from "next/image"
-import { BsSearch } from "react-icons/bs"
-import { useRouter } from "next/router"
 
 export default function SideNav({ sideNav, setSideNav }) {
   const [isDarkMode, toggleDarkMode] = useDarkMode()
@@ -29,19 +27,6 @@ export default function SideNav({ sideNav, setSideNav }) {
     },
     { id: 4, text: "اتصل بنا", icon: FaPhoneAlt, href: "tel:0114333555" },
   ]
-  const router = useRouter()
-  const inputRef = useRef()
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    let searchValue = inputRef.current.value
-    inputRef.current.blur()
-    if (searchValue.length > 0) {
-      router.push(`/search/${searchValue}`)
-      e.target.reset()
-      setSideNav(false)
-    }
-  }
   return (
     <div className="relative inset-0 flex justify-center z-102">
       <div
@@ -66,25 +51,8 @@ export default function SideNav({ sideNav, setSideNav }) {
         >
           <Image src="/logo.png" alt="side nav logo" width={80} height={80} />
         </div>
-        <form className={`mx-2 my-1 flex gap-2`} onSubmit={handleSearch}>
-          <input
-            ref={inputRef}
-            autoComplete="off"
-            type="text"
-            placeholder="ابحث..."
-            name="search"
-            className="outline-primaryGreen-500 p-2 flex-grow rounded-md bg-gray-100 focus:bg-white hover:bg-gray-200"
-          />
-          <button
-            className="py-2 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white"
-            title="البحث"
-            type="submit"
-          >
-            <BsSearch />
-          </button>
-        </form>
         <div
-          className={`flex flex-col w-full overflow-hidden rounded-md px-2 gap-1`}
+          className={`flex flex-col w-full overflow-hidden rounded-md px-2 mt-1 gap-1`}
           onClick={() => setSideNav(false)}
         >
           <p className="py-2.5 px-4 rounded-tr-md rounded-tl-md bg-primaryGreen-200 bg-opacity-500 text-justify text-xs text-gray-600 font-semibold">
