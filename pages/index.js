@@ -87,7 +87,7 @@ const Home = () => {
           type="text"
           placeholder="ابحث..."
           name="search"
-          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white dark:bg-gray-200"
+          className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white dark:bg-gray-700 placeholder:text-white dark:text-white"
         />
         <button
           className="py-1.5 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white"
