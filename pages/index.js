@@ -146,7 +146,7 @@ const Home = () => {
               <div className="w-full py-4 flex flex-col gap-2 items-center">
                 {isSubmitted ? (
                   filteredItems.length === 0 ? (
-                    <p className="text-center text-3xl font-bold text-gray-600 my-4 dark:text-gray-200">
+                    <p className="text-center w-full text-3xl font-bold text-gray-600 mt-14 dark:text-gray-200">
                       لا يوجد نتائج
                     </p>
                   ) : (
