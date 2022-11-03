@@ -12,8 +12,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
-/* ltrr sticky inset-x-0 top-0 z-90 space-x-44 overflow-scrolll flexx flex-row-reversee justify-around transition-all shadow-sm dark:shadow-none bg-white dark:bg-gray-700 */
-
 @layer components {
   .my-custom-pagination {
     @apply bg-white dark:bg-gray-700;

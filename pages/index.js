@@ -35,9 +35,10 @@ const Home = () => {
   }
   return (
     <div
-      className="relative overflow-hidden max-w-md mx-auto shadow-2xl h-screen transition duration-100 dark:bg-gray-700"
+      className="relative max-w-md mx-auto shadow-2xl transition duration-100 dark:bg-gray-700"
       dir="rtl"
     >
+      {/* h-screen overflow-hidden */}
       <Head>
         <title>خيال الشباب | Kayal alshabab</title>
         <link rel="icon" href="/favicon.ico" />
@@ -51,8 +52,8 @@ const Home = () => {
       <TopNav type={true} setSideNav={setSideNav} />
       <div className="my-custom-pagination"></div>
       <SideNav sideNav={sideNav} setSideNav={setSideNav} />
-      {/* <main className="container mx-auto bg-white transition duration-200 dark:bg-gray-700 dark:text-white space-y-4 shadow-2xl"> */}
       <Swiper
+        autoHeight={true}
         pagination={pagination}
         modules={[Pagination]}
         onSlideChange={({ activeIndex }) => {
@@ -72,7 +73,8 @@ const Home = () => {
         }}
       >
         {categories.map((category, i) => (
-          <SwiperSlide key={i} className="overflow-scroll h-screen">
+          <SwiperSlide key={i} className="h-fit">
+            {/* overflow-scroll */}
             <div className="relative space-y-2 flex flex-col justify-center overflow-hidden items-center pb-4">
               <div className="w-full py-4 flex flex-col gap-2 items-center">
                 {category.items?.map((item, index) => (
@@ -83,7 +85,6 @@ const Home = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* </main> */}
     </div>
   )
 }
