@@ -14,19 +14,8 @@
 
 @layer components {
   .my-custom-pagination {
-    @apply bg-white dark:bg-gray-700;
+    @apply bg-white dark:bg-gray-700 flex flex-nowrap gap-2 sticky inset-0 z-100 overflow-auto px-4;
   }
-}
-.my-custom-pagination {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0.5rem;
-  z-index: 100;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
 }
 .swiper-pagination-bullet {
   padding: 0.7rem 1.5rem !important;
@@ -45,9 +34,6 @@
   cursor: pointer !important;
   opacity: 1 !important;
   font-size: small;
-}
-.swiper-pagination-bullet:first-of-type {
-  margin-right: 1rem !important;
 }
 
 .swiper-pagination-bullet-active {

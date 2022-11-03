@@ -78,7 +78,7 @@ const Home = () => {
       <TopNav type={true} setSideNav={setSideNav} />
       <form
         name="myForm"
-        className={`mx-2 mt-4 flex gap-2`}
+        className="mx-6 mt-4 flex gap-2"
         onSubmit={handleSearch}
       >
         <input
@@ -90,7 +90,7 @@ const Home = () => {
           className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white dark:bg-gray-700 dark:placeholder:text-white dark:text-white"
         />
         <button
-          className="py-1.5 px-4 rounded-md bg-primaryGreen-500 hover:bg-primaryGreen-600 text-white"
+          className="py-1.5 px-4 rounded-md bg-gray-100 hover:bg-primaryGreen-600 text-gray-900 hover:bg-gray-200"
           title="البحث"
           type="submit"
         >
@@ -124,12 +124,7 @@ const Home = () => {
         autoHeight={true}
         pagination={pagination}
         modules={[Pagination]}
-        onSlideChange={({ activeIndex }) => {
-          if (activeIndex + 1 === 1) {
-            document
-              ?.getElementById("scroll")
-              ?.scrollTo({ behavior: "smooth", left: 0 })
-          }
+        onSlideChange={() => {
           const activeCat = document.querySelector(
             ".swiper-pagination-bullet-active"
           )
