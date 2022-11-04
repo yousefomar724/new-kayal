@@ -2,27 +2,19 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import React from "react"
 
-export default function TopNav({ type, setSideNav }) {
+export default function TopNav({ setSideNav }) {
   const router = useRouter()
   return (
-    <header
-      className={`z-30 rounded-bb-xl transition duration-200 dark:bg-gray-700 dark:bg-opacity-300 ${
-        type ? "relative" : "absolutee left-0 right-0  bg-opacity-0"
-      }`}
-    >
-      <nav className="z-30 relative App-header absolutee left-0 right-0 text-white pt-1 pr-1 rounded-bb-xl">
-        <div
-          className={`z-50 w-full max-w-md mx-auto h-16 top-auto bg-white rounded-t-4xl grid gap-2 grid-cols-12  place-content-center ${
-            type && "rounded-bb-xl dark:bg-gray-700 bg-opacity-50"
-          } ${router.pathname !== "/" && "dark:bg-opacity-50"}`}
-        >
+    <header className="z-30 rounded-bb-xl transition duration-200 dark:bg-gray-700 dark:bg-opacity-300 relative">
+      <nav className="z-30 relative App-header absolutee left-0 right-0 text-white pt-1 rounded-bb-xl">
+        <div className="z-50 w-full max-w-md mx-auto h-16 top-auto bg-white rounded-t-4xl grid gap-2 grid-cols-12  place-content-center rounded-bb-xl dark:bg-gray-700 bg-opacity-50">
           <div className="col-span-9 grid grid-cols-12 justify-start items-center">
             <div
-              className="col-span-10 pr-5 text-md font-semibold text-gray-500 dark:text-white overflow-y-hidden flex items-center cursor-pointer gap-2"
+              className="col-span-10 pr-4 text-md font-semibold text-gray-500 dark:text-white overflow-y-hidden flex items-center cursor-pointer gap-2"
               onClick={() => router.push("/")}
             >
               <Image
-                src="/logo.png"
+                src="/logo/logo.png"
                 width={56}
                 height={57}
                 alt="main logo"

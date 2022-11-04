@@ -3,7 +3,7 @@ import Image from "next/image"
 
 function Item({ item }) {
   return (
-    <div className="relative w-full sm:w-11/12 w-11/12 h-28 sm:mx-1 rounded-lg grid grid-cols-12 gap-2 bg-gray-100 cursor-pointer transition duration-200 dark:bg-gray-900">
+    <div className="relative w-full h-28 rounded-lg grid grid-cols-12 gap-2 bg-gray-100 cursor-pointer transition duration-200 dark:bg-gray-900">
       <div className="relative w-full rounded-lg col-span-4 sm:col-span-3 flex items-center justify-center">
         <Image
           className="absolute inset-0 w-full h-full p-0.5 object-cover rounded-lg"
@@ -15,7 +15,7 @@ function Item({ item }) {
         />
       </div>
       <div className="w-full relative col-span-8 sm:col-span-9 space-y-1 sm:space-y-2 px-2 flex flex-col justify-between">
-        <h1 className="mt-2 text-sm text-gray-800 dark:text-white font-semibold text-primaryGreen-500">
+        <h1 className="mt-2 text-sm text-gray-800 dark:text-white font-semibold !text-primaryGreen-500">
           {item.title}
         </h1>
         <p className="text-xs text-gray-800 dark:text-gray-400 overflow-hidden line-clamp-3">

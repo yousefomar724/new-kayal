@@ -1,7 +1,7 @@
 import React from "react"
 import { FiX, FiSun, FiMoon } from "react-icons/fi"
 import { FaSnapchat, FaInstagram, FaWhatsapp, FaPhoneAlt } from "react-icons/fa"
-import useDarkMode from "../../hooks/useDarkMode.js"
+import useDarkMode from "../hooks/useDarkMode.js"
 import Image from "next/image"
 
 export default function SideNav({ sideNav, setSideNav }) {
@@ -49,7 +49,12 @@ export default function SideNav({ sideNav, setSideNav }) {
         <div
           className={`bg-primaryGreen-300 w-full dark:bg-white flex items-center justify-center py-4`}
         >
-          <Image src="/logo.png" alt="side nav logo" width={80} height={80} />
+          <Image
+            src="/logo/logo.png"
+            alt="side nav logo"
+            width={80}
+            height={80}
+          />
         </div>
         <div
           className={`flex flex-col w-full overflow-hidden rounded-md px-2 mt-1 gap-1`}

@@ -24,10 +24,10 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap"
           rel="stylesheet"
         />
-        <link rel="apple-touch-icon" href="/items.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/items.png" />
-        <meta itemProp="image" content="/items.png" />
+        <link rel="apple-touch-icon" href="/logo/items.png" />
+        <link rel="manifest" href="/logo/manifest.json" />
+        <link rel="icon" href="/logo/items.png" />
+        <meta itemProp="image" content="/logo/items.png" />
       </Head>
       <body>
         <Main />

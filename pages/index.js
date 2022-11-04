@@ -1,6 +1,6 @@
 import Head from "next/head"
-import TopNav from "../components/layout/TopNav"
-import SideNav from "../components/layout/SideNav"
+import TopNav from "../components/TopNav"
+import SideNav from "../components/SideNav"
 import { useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
@@ -8,7 +8,7 @@ import "swiper/css/pagination"
 import { Pagination } from "swiper"
 import categories from "../data"
 import { BsSearch, BsX } from "react-icons/bs"
-import Item from "../components/home/Item"
+import Item from "../components/Item"
 
 const Home = () => {
   const inputRef = useRef()
@@ -74,11 +74,17 @@ const Home = () => {
           content="kayal alshbab"
           author="Fouad al-ayash"
         />
+        <meta name="keywords" content="coffee" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="خيال الشباب | Kayal alshabab" />
+        <meta property="og:url" content="https://new-kayal.vercel.app" />
+        <meta property="og:description" content="kayal alshbab" />
+        <meta property="og:image" content="/logo/items.png" />
       </Head>
-      <TopNav type={true} setSideNav={setSideNav} />
+      <TopNav setSideNav={setSideNav} />
       <form
         name="myForm"
-        className="mx-6 mt-4 flex gap-2"
+        className="mx-4 mt-4 flex gap-2"
         onSubmit={handleSearch}
       >
         <input
@@ -138,7 +144,7 @@ const Home = () => {
         {categories.map((category, i) => (
           <SwiperSlide key={i} className="h-fit">
             <div className="relative space-y-2 flex flex-col justify-center overflow-hidden items-center pb-4">
-              <div className="w-full py-4 flex flex-col gap-2 items-center">
+              <div className="w-full p-4 flex flex-col gap-2 items-center">
                 {isSubmitted ? (
                   filteredItems.length === 0 ? (
                     <p className="text-center w-full text-3xl font-bold text-gray-600 mt-20 dark:text-gray-200">

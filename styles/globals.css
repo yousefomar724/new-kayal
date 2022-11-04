@@ -14,7 +14,7 @@
 
 @layer components {
   .my-custom-pagination {
-    @apply bg-white dark:bg-gray-700 flex flex-nowrap gap-2 sticky inset-0 z-100 overflow-auto px-4;
+    @apply bg-white dark:bg-gray-700 flex flex-nowrap gap-2 sticky inset-0 z-100 overflow-auto px-2; /* add safari */
   }
 }
 .swiper-pagination-bullet {
