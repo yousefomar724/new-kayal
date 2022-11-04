@@ -98,17 +98,26 @@ const Home = () => {
           name="search"
           className="outline-none border border-gray-200 focus:border-primaryGreen-500 p-1.5 flex-grow rounded-md bg-white focus:bg-white dark:bg-gray-700 dark:placeholder:text-white dark:text-white"
         />
-        <button
-          className="py-1.5 px-4 rounded-md bg-gray-100 hover:bg-primaryGreen-600 text-gray-900 hover:bg-gray-200"
-          title="البحث"
-          type="submit"
-        >
-          <BsSearch className="text-xl" />
-        </button>
+        {isSubmitted ? (
+          <button
+            className="py-1.5 px-4 rounded-md text-white bg-primaryGreen-500 hover:bg-primaryGreen-600 dark:bg-gray-100 dark:text-primaryGreen-500"
+            onClick={close}
+          >
+            <BsX className="text-xl" />
+          </button>
+        ) : (
+          <button
+            className="py-1.5 px-4 rounded-md bg-gray-100 hover:bg-primaryGreen-600 text-gray-900 hover:bg-gray-200"
+            title="البحث"
+            type="submit"
+          >
+            <BsSearch className="text-xl" />
+          </button>
+        )}
       </form>
       <div className="my-custom-pagination"></div>
       {isSubmitted && (
-        <div className="m-4 flex items-center justify-between bg-gray-100 px-3 py-2 rounded-md dark:bg-primaryGreen-500">
+        <div className="m-4 bg-gray-100 px-3 py-2 rounded-md dark:bg-primaryGreen-500">
           <div className="flex flex-col gap-1">
             <h2 className="text-3xl dark:text-white text-primaryGreen-600 dark:text-white font-bold">
               {searchValue}
@@ -120,10 +129,6 @@ const Home = () => {
               صنف من نتائج البحث
             </span>
           </div>
-          <BsX
-            className="w-10 h-10 p-1.5 text-white bg-primaryGreen-500 rounded-xl hover:bg-primaryGreen-600 cursor-pointer dark:bg-gray-100 dark:text-primaryGreen-500"
-            onClick={close}
-          />
         </div>
       )}
       <SideNav sideNav={sideNav} setSideNav={setSideNav} />

@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { FiX, FiSun, FiMoon } from "react-icons/fi"
 import { FaSnapchat, FaInstagram, FaWhatsapp, FaPhoneAlt } from "react-icons/fa"
-import useDarkMode from "../hooks/useDarkMode.js"
 import Image from "next/image"
+import { useTheme } from "next-themes"
 
 export default function SideNav({ sideNav, setSideNav }) {
-  const [isDarkMode, toggleDarkMode] = useDarkMode()
+  const [mounted, setMounted] = useState(false)
+  const { systemTheme, setTheme, theme } = useTheme()
   const sideNavData = [
     {
       id: 1,
@@ -27,6 +28,46 @@ export default function SideNav({ sideNav, setSideNav }) {
     },
     { id: 4, text: "اتصل بنا", icon: FaPhoneAlt, href: "tel:0114333555" },
   ]
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const toggleTheme = () => {
+    if (!mounted) return null
+    const currentTheme = theme === "system" ? systemTheme : theme
+
+    if (currentTheme === "dark") {
+      return (
+        <div
+          onClick={() => setTheme("light")}
+          className="relative flex justify-between items-center py-3 px-4 rounded-br-md rounded-bl-md transition bg-gray-100 bg-opacity-500 shadow-sm text-gray-800 cursor-pointer"
+        >
+          <h1 className="text-xs md:text-md text-gray-600 font-semibold">
+            وضع نهاري
+          </h1>
+          <div className="flex items-center p-1 rounded-full shadow-md bg-white text-gray-800">
+            <FiSun className="text-green-700 w-5 h-5 animate-ping" />
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div
+          onClick={() => setTheme("dark")}
+          className="relative flex justify-between items-center py-3 px-4 rounded-br-md rounded-bl-md transition bg-gray-100 bg-opacity-500 shadow-sm text-gray-800 cursor-pointer"
+        >
+          <h1 className="text-xs md:text-md text-gray-600 font-semibold">
+            وضع ليلي
+          </h1>
+          <div className='flex items-center p-1 rounded-full shadow-md "bg-gray-700 text-gray-100'>
+            <FiMoon className="text-gray-800 w-5 h-5" />
+          </div>
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="relative inset-0 flex justify-center z-102">
       <div
@@ -77,27 +118,7 @@ export default function SideNav({ sideNav, setSideNav }) {
               <link.icon className="text-primaryGreen-500 w-5 h-5" />
             </a>
           ))}
-          <div
-            onClick={() => toggleDarkMode()}
-            className="relative flex justify-between items-center py-3 px-4 rounded-br-md rounded-bl-md transition bg-gray-100 bg-opacity-500 shadow-sm text-gray-800"
-          >
-            <h1 className="text-xs md:text-md text-gray-600 font-semibold">
-              {isDarkMode ? "وضع نهاري" : "وضع ليلي"}
-            </h1>
-            <div
-              className={`flex items-center p-1 rounded-full shadow-md ${
-                isDarkMode
-                  ? "bg-white text-gray-800"
-                  : "bg-gray-700 text-gray-100"
-              }`}
-            >
-              {isDarkMode ? (
-                <FiSun className="text-green-7000 w-5 h-5 animate-ping" />
-              ) : (
-                <FiMoon className="text-gray-8000 w-5 h-5" />
-              )}
-            </div>
-          </div>
+          {toggleTheme()}
         </div>
       </div>
     </div>

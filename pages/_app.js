@@ -1,11 +1,11 @@
 import "../styles/globals.css"
-import { ItemProvider } from "../context/ItemContext"
+import { ThemeProvider } from "next-themes"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ItemProvider>
+    <ThemeProvider attribute="class">
       <Component {...pageProps} />
-    </ItemProvider>
+    </ThemeProvider>
   )
 }
 

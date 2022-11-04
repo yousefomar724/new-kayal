@@ -18,7 +18,7 @@ function Item({ item }) {
         <h1 className="mt-2 text-sm text-gray-800 dark:text-white font-semibold !text-primaryGreen-500">
           {item.title}
         </h1>
-        <p className="text-xs text-gray-800 dark:text-gray-400 overflow-hidden line-clamp-3">
+        <p className="text-xs text-gray-800 dark:text-gray-400 overflow-hidden">
           {item.description}
         </p>
         <div className="flex justify-between py-2 items-center w-full">
