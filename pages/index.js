@@ -79,7 +79,10 @@ const Home = () => {
         <meta property="og:title" content="خيال الشباب | Kayal alshabab" />
         <meta property="og:url" content="https://new-kayal.vercel.app" />
         <meta property="og:description" content="kayal alshbab" />
-        <meta property="og:image" content="/logo/items.png" />
+        <meta
+          property="og:image"
+          content="https://new-kayal.vercel.app/logo/items.png"
+        />
       </Head>
       <TopNav setSideNav={setSideNav} />
       <form
