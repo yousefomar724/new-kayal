@@ -1,5 +1,4 @@
 import "../styles/globals.css"
-import dynamic from "next/dynamic"
 import { ItemProvider } from "../context/ItemContext"
 
 function MyApp({ Component, pageProps }) {
@@ -10,6 +9,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default dynamic(() => Promise.resolve(MyApp), {
-  ssr: false,
-})
+export default MyApp
