@@ -103,7 +103,7 @@ const Home = () => {
             className="py-1.5 px-4 rounded-md text-white bg-primaryGreen-500 hover:bg-primaryGreen-600 dark:bg-gray-100 dark:text-primaryGreen-500"
             onClick={close}
           >
-            <BsX className="text-xl" />
+            <BsX className="text-2xl" />
           </button>
         ) : (
           <button
