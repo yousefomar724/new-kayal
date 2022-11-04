@@ -80,14 +80,4 @@ module.exports = {
     },
     textTransform: ({ after }) => after(["first-letter"]),
   },
-  plugins: [
-    plugin(function ({ addVariant, e }) {
-      addVariant("first-letter", ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `.${e(`first-letter${separator}${className}`)}:first-letter`
-        })
-      })
-    }),
-    require("@tailwindcss/line-clamp"),
-  ],
 }
