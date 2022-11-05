@@ -20,7 +20,10 @@
 
 @layer components {
   .my-custom-pagination {
-    @apply bg-white dark:bg-gray-700 flex flex-nowrap gap-2 sticky inset-0 z-100 overflow-auto px-2; /* add safari */
+    @apply bg-white dark:text-white text-gray-700 dark:bg-gray-700 flex flex-nowrap gap-2 sticky inset-0 z-100 overflow-auto px-2; /* add safari */
+  }
+  .my-custom-pagination > span {
+    @apply bg-gray-100 dark:bg-gray-900;
   }
 }
 .swiper-pagination-bullet {
@@ -32,8 +35,6 @@
   border-radius: 10000px !important;
   display: flex !important;
   flex-direction: row-reverse;
-  background-color: #f3f4f6 !important;
-  color: #374151;
   gap: 0.5rem;
   align-items: center;
   justify-content: center;

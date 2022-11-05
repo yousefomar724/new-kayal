@@ -68,6 +68,12 @@ export default function SideNav({ sideNav, setSideNav }) {
     }
   }
 
+  useEffect(() => {
+    theme === "dark"
+      ? (document.querySelector('meta[name="theme-color"]').content = "#374151")
+      : (document.querySelector('meta[name="theme-color"]').content = "#ffffff")
+  }, [theme])
+
   return (
     <div className="relative inset-0 flex justify-center z-102">
       <div
