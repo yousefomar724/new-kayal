@@ -47,7 +47,7 @@ export default function SideNav({ sideNav, setSideNav }) {
             وضع نهاري
           </h1>
           <div className="flex items-center p-1 rounded-full shadow-md bg-white text-gray-800">
-            <FiSun className="text-green-700 w-5 h-5 animate-ping" />
+            <FiSun className="text-green-700 w-5 h-5" />
           </div>
         </div>
       )
@@ -60,8 +60,8 @@ export default function SideNav({ sideNav, setSideNav }) {
           <h1 className="text-xs md:text-md text-gray-600 font-semibold">
             وضع ليلي
           </h1>
-          <div className='flex items-center p-1 rounded-full shadow-md "bg-gray-700 text-gray-100'>
-            <FiMoon className="text-gray-800 w-5 h-5" />
+          <div className="flex items-center p-1 rounded-full shadow-md bg-gray-700 text-gray-100">
+            <FiMoon className="w-5 h-5" />
           </div>
         </div>
       )

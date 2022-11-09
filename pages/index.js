@@ -100,18 +100,19 @@ const Home = () => {
         />
         {isSubmitted ? (
           <button
-            className="py-1.5 px-4 rounded-md text-white bg-primaryGreen-500 hover:bg-primaryGreen-600 dark:bg-gray-100 dark:text-primaryGreen-500"
+            className="w-10 h-10 flex items-center justify-center rounded-md text-white bg-primaryGreen-500 hover:bg-primaryGreen-600 dark:bg-gray-100 dark:text-gray-900"
             onClick={close}
+            title="انهاء البحث"
           >
-            <BsX className="text-[1.8rem]" />
+            <BsX className="text-2xl" />
           </button>
         ) : (
           <button
-            className="py-1.5 px-4 rounded-md bg-gray-100 hover:bg-primaryGreen-600 text-gray-900 hover:bg-gray-200"
+            className="w-10 h-10 flex items-center justify-center rounded-md bg-gray-100 hover:bg-primaryGreen-600 text-gray-900 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-100"
             title="البحث"
             type="submit"
           >
-            <BsSearch className="text-xl" />
+            <BsSearch />
           </button>
         )}
       </form>
@@ -133,8 +134,9 @@ const Home = () => {
       )}
       <SideNav sideNav={sideNav} setSideNav={setSideNav} />
       <Swiper
-        allowSlideNext={!isSubmitted}
-        allowSlidePrev={!isSubmitted}
+        loop={true}
+        // allowSlideNext={!isSubmitted}
+        // allowSlidePrev={!isSubmitted}
         autoHeight={true}
         pagination={pagination}
         modules={[Pagination]}
@@ -147,6 +149,7 @@ const Home = () => {
             block: "center",
             inline: "center",
           })
+          close()
         }}
       >
         {categories.map((category, i) => (
